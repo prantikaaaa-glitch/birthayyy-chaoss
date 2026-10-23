@@ -181,6 +181,13 @@ p {
     background: #ffe3ef;
     display: block;
 }
+  .polaroid img.square-photo{
+      width: 100%
+      aspect-ratio: 1/1
+      height: auto;
+      object-fit: cover;
+      display: block;
+  }
 
 .caption {
     font-size: 14px;
@@ -356,7 +363,7 @@ footer {
 
     <div class="scrapbook">
         <div class="polaroid">
-            <img src="photo1.jpg" alt="Memory one" style="width:300px; height:auto;">
+            <img src="photo1.jpg" alt="Memory one" class="square-photo">
             <p class="caption">💗 certified cutie</p>
         </div>
 
