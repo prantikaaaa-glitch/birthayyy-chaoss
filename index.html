@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UDIEE LEVEL UP 🎀</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+:root {
+    --pink: #ff8fbd;
+    --light-pink: #ffe3ef;
+    --purple: #c8a6ff;
+    --dark: #70405e;
+    --white: #fffafc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Fredoka', 'Trebuchet MS', sans-serif;
+    background: #fff0f6;
+    color: var(--dark);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: 0;
+    border-radius: 30px;
+    padding: 13px 21px;
+    margin: 6px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff86b5, #f5a4ce);
+    box-shadow: 0 5px 0 #e77eaa;
+    transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    box-shadow: 0 8px 0 #e77eaa;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+.secondary {
+    background: linear-gradient(135deg, #b99aff, #d0b6ff);
+    box-shadow: 0 5px 0 #a387d9;
+}
+
+header {
+    padding: 55px 15px 45px;
+    background: linear-gradient(135deg, #ffb5d3, #dfc6ff);
+    border-bottom: 5px dotted white;
+    position: relative;
+}
+
+.badge {
+    display: inline-block;
+    background: white;
+    padding: 9px 16px;
+    border-radius: 25px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(36px, 8vw, 66px);
+    margin: 22px 0 10px;
+    color: white;
+    text-shadow: 3px 5px 0 #df80b1;
+}
+
+.subtitle {
+    font-size: 17px;
+}
+
+.sticker {
+    font-size: 38px;
+    margin: 8px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.sticker:nth-child(even) {
+    animation-delay: .8s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+section {
+    width: min(92%, 720px);
+    margin: 28px auto;
+    padding: 28px 20px;
+    border: 2px solid #ffe0ee;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .93);
+    box-shadow: 0 9px 25px #dca4c426;
+}
+
+h2 {
+    color: #db649c;
+    font-size: clamp(23px, 5vw, 32px);
+}
+
+p {
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#secretFile {
+    display: none;
+    animation: appear .6s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.file-card {
+    background: #fff1f7;
+    border: 2px dashed #f5a5cb;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.scrapbook {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+    margin: 24px auto;
+}
+
+.polaroid {
+    padding: 10px 10px 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px #75465e1b;
+    border: 1px solid #f8dfeb;
+    transform: rotate(-2deg);
+    transition: transform .25s;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0) scale(1.03);
+}
+
+.polaroid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+    background: #ffe3ef;
+}
+
+.caption {
+    font-size: 14px;
+    margin: 12px 0 0;
+}
+
+.game-box {
+    background: #fff2f8;
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+
+#gameMessage {
+    font-weight: 600;
+    min-height: 28px;
+}
+
+.cake {
+    font-size: 90px;
+    cursor: pointer;
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+    filter: drop-shadow(0 8px 8px #ffb2d855);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+#letter {
+    display: none;
+    text-align: left;
+    background: #fff3f8;
+    border: 2px dashed #ffb0d1;
+    border-radius: 20px;
+    padding: 22px;
+    margin-top: 20px;
+    animation: appear .7s ease;
+}
+
+#letter h3 {
+    text-align: center;
+    color: #d75b96;
+}
+
+#letter p {
+    margin: 16px 0;
+}
+
+#eggMessage {
+    color: #c24e8a;
+    font-weight: 600;
+    min-height: 24px;
+}
+
+footer {
+    padding: 30px 15px;
+    background: #ffe0ed;
+    margin-top: 40px;
+}
+
+.confetti {
+    position: fixed;
+    z-index: 9999;
+    top: -30px;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    background: #ffe0ed;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff8fbd, #c8a6ff);
+    transition: width .5s;
+}
+
+@media (max-width: 420px) {
+    header {
+        padding: 38px 12px;
+    }
+
+    section {
+        padding: 23px 13px;
+    }
+
+    .scrapbook {
+        gap: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="badge">🔒 CLASSIFIED BIRTHDAY MISSION</div>
+
+    <div>
+        <span class="sticker">🎀</span>
+        <span class="sticker">💌</span>
+        <span class="sticker">🎮</span>
+    </div>
+
+    <h1>UDIEE LEVEL UP!</h1>
+
+    <p class="subtitle">
+        A tiny website for a VERY special human. 💗
+    </p>
+
+    <p>⚠️ WARNING: Extreme birthday chaos detected.</p>
+
+    <button onclick="openFile()">OPEN SECRET FILE 🔐</button>
+</header>
+
+<main>
+
+<section id="secretFile">
+    <div class="file-card">
+        <h2>🚨 TOP SECRET 🚨</h2>
+        <p>SUBJECT: THE BIRTHDAY LEGEND</p>
+        <p>STATUS: TOO ICONIC TO HANDLE</p>
+        <p>MISSION: Unlock every birthday achievement.</p>
+        <button onclick="unlock(1); celebrate();">
+            ACCEPT THE MISSION 💗
+        </button>
+    </div>
+</section>
+
+<section id="missionSection">
+    <h2>🎮 YOUR LEVEL-UP PROGRESS</h2>
+    <p>Complete the little missions to unlock birthday surprises!</p>
+
+    <div class="progress-track">
+        <div id="progress"></div>
+    </div>
+
+    <p id="progressText">Achievements unlocked: 0 / 3</p>
+
+    <button class="secondary" onclick="unlock(2)">
+        MISSION 1: SMILE 😊
+    </button>
+
+    <button class="secondary" onclick="unlock(3)">
+        MISSION 2: MAKE A WISH ✨
+    </button>
+</section>
+
+<section>
+    <h2>📸 THE MEMORY VAULT</h2>
+    <p>Four little spaces for four precious memories.</p>
+
+    <div class="scrapbook">
+        <div class="polaroid">
+            <img src="photo1.jpg" alt="Memory one" style="width:300px; height:auto;">
+            <p class="caption">💗 certified cutie</p>
+        </div>
+
+        <div class="polaroid">
+            <img src="./photo2.jpg" alt="Memory two">
+            <p class="caption">🎀 main character energy</p>
+        </div>
+
+        <div class="polaroid">
+            <img src="./photo3.jpg" alt="Memory three">
+            <p class="caption">🤣 questionable behaviour</p>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo4.jpg" alt="Memory four">
+            <p class="caption">✨ forever iconic</p>
+        </div>
+    </div>
+
+    <p>Every picture tells a little story. 🫶</p>
+</section>
+
+<section>
+    <h2>🕹️ MINI GAME: PICK YOUR POWER</h2>
+
+    <div class="game-box">
+        <p>Which is the strongest birthday superpower?</p>
+
+        <button onclick="playGame(false)">Being perfect 💅</button>
+
+        <button onclick="playGame(true)">Being yourself 💗</button>
+
+        <button onclick="playGame(false)">Never making mistakes 😭</button>
+
+        <p id="gameMessage"></p>
+
+        <div id="gameReward" class="hidden">
+            <h2>🏆 ACHIEVEMENT UNLOCKED!</h2>
+            <p>YOU ARE OFFICIALLY A LEGEND.</p>
+            <button onclick="unlock(4)">CLAIM REWARD 🎁</button>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>🎂 FINAL BOSS: THE BIRTHDAY CAKE</h2>
+
+    <div class="cake" id="cake" onclick="cakeClick()">🎂</div>
+
+    <p>Click the cake to make a birthday wish!</p>
+
+    <button onclick="makeWish()">MAKE A WISH ✨</button>
+
+    <p id="wishMessage"></p>
+</section>
+
+<section>
+    <h2>💌 A LETTER JUST FOR YOU</h2>
+
+    <p>This file contains dangerously wholesome feelings.</p>
+
+    <button onclick="toggleLetter()">UNSEAL THE LETTER 💌</button>
+
+    <div id="letter">
+        <h3>To my favourite birthday human, 🎀</h3>
+
+        <p>HAPPIEST BIRTHDAYYYYY! 💗🎂</p>
+
+        <p>
+            I hope this new chapter of your life brings you peaceful days,
+            genuine people, beautiful opportunities, and a million tiny
+            reasons to smile.
+        </p>
+
+        <p>
+            Never feel like you have to be perfect to be worthy of love
+            and kindness. You can grow at your own pace, make mistakes,
+            change your mind, and still be someone truly wonderful.
+        </p>
+
+        <p>
+            I hope you get to experience the kind of happiness that makes
+            ordinary days feel special, and the kind of friendship that
+            makes you feel appreciated just as you are.
+        </p>
+
+        <p>
+            May your dreams grow bigger, your worries feel lighter,
+            and your next year be filled with laughter, adventures,
+            and memories worth keeping. 🫶
+        </p>
+
+        <p>
+            Whatever this new level brings, I hope you never forget
+            that your story is still unfolding. There are so many
+            lovely things left for you to discover.
+        </p>
+
+        <h3>HAPPY BIRTHDAY, UDIEEE! 🎂💗</h3>
+    </div>
+</section>
+
+<section>
+    <h2>🕵️ THE FORBIDDEN BUTTON</h2>
+    <p>Absolutely nothing suspicious is happening here. 👀</p>
+
+    <button class="secondary" onclick="secretEgg()">
+        DO NOT PRESS 🚫
+    </button>
+
+    <p id="eggMessage"></p>
+</section>
+
+</main>
+
+<footer>
+    <p>Made with love, glitter, and questionable levels of chaos by Prantoss. 🎀</p>
+    <p>UDIEE LEVEL UP! © Birthday Edition 💗</p>
+</footer>
+
+<script>
+let completed = [];
+
+function unlock(id) {
+    if (!completed.includes(id)) {
+        completed.push(id);
+    }
+
+    const count = Math.min(completed.length, 3);
+
+    document.getElementById("progress").style.width =
+        (count / 3 * 100) + "%";
+
+    document.getElementById("progressText").textContent =
+        "Achievements unlocked: " + count + " / 3";
+
+    if (count >= 3) {
+        celebrate();
+        document.getElementById("progressText").textContent =
+            "🏆 ALL MISSIONS COMPLETE! YOU'RE A LEGEND!";
+    }
+}
+
+function openFile() {
+    const file = document.getElementById("secretFile");
+
+    file.style.display = "block";
+
+    file.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    celebrate();
+}
+
+function celebrate() {
+    const symbols = ["💗", "🎀", "✨", "🌸", "💖", "🎉"];
+
+    for (let i = 0; i < 65; i++) {
+        const item = document.createElement("span");
+
+        item.className = "confetti";
+
+        item.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.fontSize =
+            (16 + Math.random() * 18) + "px";
+
+        item.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 5200);
+    }
+}
+
+function playGame(correct) {
+    const message = document.getElementById("gameMessage");
+    const reward = document.getElementById("gameReward");
+
+    if (correct) {
+        message.textContent =
+            "CORRECTTT! YOUR SUPERPOWER IS BEING YOU! 💗";
+
+        reward.classList.remove("hidden");
+
+        unlock(1);
+        celebrate();
+    } else {
+        message.textContent =
+            "NOOO BESTIE 😭 Try again! Nobody needs to be perfect.";
+    }
+}
+
+function cakeClick() {
+    const cake = document.getElementById("cake");
+
+    cake.textContent = "🍰";
+
+    setTimeout(() => {
+        cake.textContent = "🎂";
+    }, 800);
+}
+
+function makeWish() {
+    document.getElementById("wishMessage").textContent =
+        "✨ WISH SENT! MAY THIS NEW LEVEL BE FULL OF HAPPINESS! 💗";
+
+    unlock(2);
+    celebrate();
+}
+
+function toggleLetter() {
+    const letter = document.getElementById("letter");
+
+    if (letter.style.display === "block") {
+        letter.style.display = "none";
+    } else {
+        letter.style.display = "block";
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        celebrate();
+    }
+}
+
+function secretEgg() {
+    document.getElementById("eggMessage").textContent =
+        "YOU FOUND THE SECRET! 🎀 VIP MEMBER OF THE CHAOS CLUB " +
+        "UNLOCKED. REWARD: INFINITE HUGS AND CAKE! 🎂💗";
+
+    unlock(3);
+    celebrate();
+}
+</script>
+
+</body>
+</html>
